@@ -1,0 +1,17 @@
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\bin\Debug\CPS_Logistics.exe.config
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\bin\Debug\CPS_Logistics.exe
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\bin\Debug\CPS_Logistics.pdb
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.csprojResolveAssemblyReference.cache
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.Properties.Resources.resources
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.csproj.GenerateResource.Cache
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.exe
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.pdb
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.OrderReceive_1.resources
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.OrderReceive_2.resources
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.MPS.resources
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.Scheduling.Scheduling.resources
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.Scheduling.AGVdetails.resources
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.Scheduling.Sequenece.resources
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.csproj.ResolveComReference.cache
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\bin\Debug\PSOUpdate.dll
+D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.Scheduling.AutoControl.resources

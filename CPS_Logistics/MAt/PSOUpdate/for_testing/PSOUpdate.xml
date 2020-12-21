@@ -1,0 +1,499 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PSOUpdate</name>
+    </assembly>
+    <members>
+        <member name="T:PSOUpdate.ALGO">
+            <summary>
+            The ALGO class provides a CLS compliant, MWArray interface to the MATLAB functions
+            contained in the files:
+            <newpara></newpara>
+            C:\Users\Robin\Desktop\毕业设计—基于CPS的车间物流系统设计\PSOUpdate.m
+            </summary>
+            <remarks>
+            @Version 0.0
+            </remarks>
+        </member>
+        <member name="M:PSOUpdate.ALGO.#cctor">
+            <summary internal= "true">
+            The static constructor instantiates and initializes the MATLAB Runtime instance.
+            </summary>
+        </member>
+        <member name="M:PSOUpdate.ALGO.#ctor">
+            <summary>
+            Constructs a new instance of the ALGO class.
+            </summary>
+        </member>
+        <member name="M:PSOUpdate.ALGO.Finalize">
+            <summary internal= "true">
+            Class destructor called by the CLR garbage collector.
+            </summary>
+        </member>
+        <member name="M:PSOUpdate.ALGO.Dispose">
+            <summary>
+            Frees the native resources associated with this object
+            </summary>
+        </member>
+        <member name="M:PSOUpdate.ALGO.Dispose(System.Boolean)">
+            <summary internal= "true">
+            Internal dispose function
+            </summary>
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate">
+             <summary>
+             Provides a single output, 0-input MWArrayinterface to the PSOUpdate MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 1-input MWArrayinterface to the PSOUpdate MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="swarmsize">Input argument #1</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 2-input MWArrayinterface to the PSOUpdate MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 3-input MWArrayinterface to the PSOUpdate MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 4-input MWArrayinterface to the PSOUpdate MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <param name="agv1po">Input argument #4</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 5-input MWArrayinterface to the PSOUpdate MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <param name="agv1po">Input argument #4</param>
+             <param name="agv2po">Input argument #5</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 6-input MWArrayinterface to the PSOUpdate MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <param name="agv1po">Input argument #4</param>
+             <param name="agv2po">Input argument #5</param>
+             <param name="agv1end">Input argument #6</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 7-input MWArrayinterface to the PSOUpdate MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <param name="agv1po">Input argument #4</param>
+             <param name="agv2po">Input argument #5</param>
+             <param name="agv1end">Input argument #6</param>
+             <param name="agv2end">Input argument #7</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(System.Int32)">
+             <summary>
+             Provides the standard 0-input MWArray interface to the PSOUpdate MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 1-input MWArray interface to the PSOUpdate MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="swarmsize">Input argument #1</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 2-input MWArray interface to the PSOUpdate MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 3-input MWArray interface to the PSOUpdate MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 4-input MWArray interface to the PSOUpdate MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <param name="agv1po">Input argument #4</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 5-input MWArray interface to the PSOUpdate MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <param name="agv1po">Input argument #4</param>
+             <param name="agv2po">Input argument #5</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 6-input MWArray interface to the PSOUpdate MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <param name="agv1po">Input argument #4</param>
+             <param name="agv2po">Input argument #5</param>
+             <param name="agv1end">Input argument #6</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 7-input MWArray interface to the PSOUpdate MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="swarmsize">Input argument #1</param>
+             <param name="jobsequence">Input argument #2</param>
+             <param name="emergency">Input argument #3</param>
+             <param name="agv1po">Input argument #4</param>
+             <param name="agv2po">Input argument #5</param>
+             <param name="agv1end">Input argument #6</param>
+             <param name="agv2end">Input argument #7</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.PSOUpdate(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray[]@,MathWorks.MATLAB.NET.Arrays.MWArray[])">
+             <summary>
+             Provides an interface for the PSOUpdate function in which the input and output
+             arguments are specified as an array of MWArrays.
+             </summary>
+             <remarks>
+             This method will allocate and return by reference the output argument
+             array.<newpara></newpara>
+             M-Documentation:
+             本段代码没有考虑到车间干扰对小车调度的影响，粒子维数为2维，第一维是整数，代表AGV台
+             号
+             第二维是AGV执行任务的顺序，按照升序排列，输入参数为工作序列和粒子群规模，输出参数?
+             鞫群蟮慕峁?
+             在其他文献中也提出了动态w，c1，c2参数的概念以及粒子群算法与GA相结合的优化算法，这?
+             锊挥柩≡瘛?
+             cycletime 是循环次数
+             w，c1，c2 为粒子群算法参数
+             minpath  储存全局最优路径长度
+             legthen 为任务数量，单词好像拼错了
+             swarmsize 为粒子群数量，50就可以了
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return</param>
+             <param name= "argsOut">Array of MWArray output arguments</param>
+             <param name= "argsIn">Array of MWArray input arguments</param>
+            
+        </member>
+        <member name="M:PSOUpdate.ALGO.WaitForFiguresToDie">
+             <summary>
+             This method will cause a MATLAB figure window to behave as a modal dialog box.
+             The method will not return until all the figure windows associated with this
+             component have been closed.
+             </summary>
+             <remarks>
+             An application should only call this method when required to keep the
+             MATLAB figure window from disappearing.  Other techniques, such as calling
+             Console.ReadLine() from the application should be considered where
+             possible.</remarks>
+            
+        </member>
+    </members>
+</doc>
