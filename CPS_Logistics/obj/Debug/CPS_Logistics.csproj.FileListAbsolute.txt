@@ -15,3 +15,7 @@ D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.Scheduling.Sequen
 D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.csproj.ResolveComReference.cache
 D:\PROGRAM\CPS_Logistics\CPS_Logistics\bin\Debug\PSOUpdate.dll
 D:\PROGRAM\CPS_Logistics\CPS_Logistics\obj\Debug\CPS_Logistics.Scheduling.AutoControl.resources
+\\LAPTOP-17S8S2N9\Github\robot edge project\CPS_logistics\CPS_Logistics\bin\Debug\CPS_Logistics.exe.config
+\\LAPTOP-17S8S2N9\Github\robot edge project\CPS_logistics\CPS_Logistics\obj\Debug\CPS_Logistics.csproj.ResolveComReference.cache
+\\LAPTOP-17S8S2N9\Github\robot edge project\CPS_logistics\CPS_Logistics\obj\Debug\CPS_Logistics.exe
+\\LAPTOP-17S8S2N9\Github\robot edge project\CPS_logistics\CPS_Logistics\obj\Debug\CPS_Logistics.pdb
