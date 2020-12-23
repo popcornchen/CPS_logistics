@@ -1249,11 +1249,12 @@ namespace CPS_Logistics.Scheduling
 
         DataTable tb_Need1 = new DataTable("tb_Need1");
         DataTable tb_Need2 = new DataTable("tb_Need2");
-        DataTable tb_monitor = new DataTable("tb_monitor");
+        //DataTable tb_monitor = new DataTable("tb_monitor");
 
         string[] route1_split;
         string[] route2_split;
-        static int sequence;
+        static int id_1;
+        static int id_2;
 
         /*-----------------读取命令序列：两遍->读出展示+内部check--------------------*/
         void read_seq()
@@ -1264,14 +1265,14 @@ namespace CPS_Logistics.Scheduling
             DataSet GetTag = new DataSet();
             //string SQLstr1 = "SELECT ID AS ID  FROM tb_CommandForAGV20170511 WHERE Needornot ='1'";
             //string SQLstr2 = "SELECT ID AS ID  FROM tb_CommandForAGV20170511 WHERE Needornot ='2'";
-            string startTag = "Select StartPosition from agv_monitor where line=0";
+            //string startTag = "Select StartPosition from agv_monitor order by id DESC limit 1";
 
-            GetTag = CPS_Logistics.DataClass.MysqlClass.DB_set(startTag, tb_monitor.TableName);
-            tb_monitor = GetTag.Tables[0];
-            sequence = Convert.ToInt16(tb_monitor.Rows[0]["StartPosition"]);
+            //GetTag = CPS_Logistics.DataClass.MysqlClass.DB_set(startTag, tb_monitor.TableName);
+            //tb_monitor = GetTag.Tables[0];
+            //sequence = Convert.ToInt16(tb_monitor.Rows[0]["StartPosition"]);
 
-            string SQLstr1 = "SELECT route1 from agv_command WHERE sequence=" + sequence;
-            string SQLstr2 = "SELECT route2 from agv_command WHERE sequence=" + sequence;
+            string SQLstr1 = "SELECT sub_task from agv_optimize WHERE id_AGV='1' AND checked='0' order by id DESC limit 1";
+            string SQLstr2 = "SELECT sub_task from agv_optimize WHERE id_AGV='2' AND checked='0' order by id DESC limit 1";
 
             commission = CPS_Logistics.DataClass.MysqlClass.DB_set(SQLstr1, tb_Need1.TableName);
             tb_Need1 = commission.Tables[0];  //commision是dataset, tb_need1是datatable
@@ -1283,8 +1284,10 @@ namespace CPS_Logistics.Scheduling
             string route2;
 
             label9.Text = "";
-            route1 = tb_Need1.Rows[0]["route1"].ToString();
-            route2 = tb_Need1.Rows[0]["route2"].ToString();
+            route1 = tb_Need1.Rows[0]["sub_task"].ToString();
+            route2 = tb_Need2.Rows[0]["sub_task"].ToString();
+            id_1 = Convert.ToInt16(tb_Need1.Rows[0]["id"]); //主键读出来,后面update要用
+            id_2 = Convert.ToInt16(tb_Need2.Rows[0]["id"]);
             route1_split = route1.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
             route2_split = route2.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -1591,9 +1594,9 @@ namespace CPS_Logistics.Scheduling
                 return;
             }
 
-            sequence += 1;
-            string SQLstr = "UPDATE agv_monitor set StartPosition=" + sequence + " where line=0"; //这里可以改成monitor的startposition+1
-            DataClass.MysqlClass.DB_Change(SQLstr);
+            //sequence += 1;
+            //string SQLstr = "UPDATE agv_monitor set StartPosition=" + sequence + " where line=0"; //这里可以改成monitor的startposition+1
+            //DataClass.MysqlClass.DB_Change(SQLstr);
 
 
             toolstatus = 4;

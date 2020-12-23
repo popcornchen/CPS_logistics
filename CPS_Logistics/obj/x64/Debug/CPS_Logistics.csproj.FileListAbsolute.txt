@@ -55,3 +55,7 @@ C:\Users\Robotmaster\Desktop\机器人云平台边缘开发\CPS_Logistics\obj\x6
 C:\Users\Robotmaster\Desktop\机器人云平台边缘开发\CPS_Logistics\obj\x64\Debug\CPS_Logistics.Scheduling.Scheduling.resources
 C:\Users\Robotmaster\Desktop\机器人云平台边缘开发\CPS_Logistics\obj\x64\Debug\CPS_Logistics.Scheduling.Sequenece.resources
 C:\Users\Robotmaster\Desktop\机器人云平台边缘开发\CPS_Logistics\obj\x64\Debug\CPS_Logistics.csproj.GenerateResource.Cache
+\\LAPTOP-17S8S2N9\Github\robot edge project\CPS_logistics\CPS_Logistics\bin\x64\Debug\CPS_Logistics.exe.config
+\\LAPTOP-17S8S2N9\Github\robot edge project\CPS_logistics\CPS_Logistics\obj\x64\Debug\CPS_Logistics.csproj.ResolveComReference.cache
+\\LAPTOP-17S8S2N9\Github\robot edge project\CPS_logistics\CPS_Logistics\obj\x64\Debug\CPS_Logistics.exe
+\\LAPTOP-17S8S2N9\Github\robot edge project\CPS_logistics\CPS_Logistics\obj\x64\Debug\CPS_Logistics.pdb
