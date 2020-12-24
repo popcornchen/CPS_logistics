@@ -1249,10 +1249,12 @@ namespace CPS_Logistics.Scheduling
 
         DataTable tb_Need1 = new DataTable("tb_Need1");
         DataTable tb_Need2 = new DataTable("tb_Need2");
+        //DataTable tb_emergency = new DataTable("tb_emergency");
         //DataTable tb_monitor = new DataTable("tb_monitor");
 
         string[] route1_split;
         string[] route2_split;
+        //string[] emergency_split;
         static int id_1;
         static int id_2;
 
@@ -1262,7 +1264,6 @@ namespace CPS_Logistics.Scheduling
             //提示进入下次工作循环，读取命令序列，这里改成mysql,调试决定是否放进线程
 
             DataSet commission = new DataSet();
-            DataSet GetTag = new DataSet();
             //string SQLstr1 = "SELECT ID AS ID  FROM tb_CommandForAGV20170511 WHERE Needornot ='1'";
             //string SQLstr2 = "SELECT ID AS ID  FROM tb_CommandForAGV20170511 WHERE Needornot ='2'";
             //string startTag = "Select StartPosition from agv_monitor order by id DESC limit 1";
@@ -1273,19 +1274,24 @@ namespace CPS_Logistics.Scheduling
 
             string SQLstr1 = "SELECT sub_task from agv_optimize WHERE id_AGV='1' AND checked='0' order by id DESC limit 1";
             string SQLstr2 = "SELECT sub_task from agv_optimize WHERE id_AGV='2' AND checked='0' order by id DESC limit 1";
+            //string SQLstr_em = "SELECT emergency from agv_optimize WHERE id_AGV='0' AND checked='0' order by id DESC limit 1"; //emergency 先取出来再说
 
             commission = CPS_Logistics.DataClass.MysqlClass.DB_set(SQLstr1, tb_Need1.TableName);
             tb_Need1 = commission.Tables[0];  //commision是dataset, tb_need1是datatable
             commission = CPS_Logistics.DataClass.MysqlClass.DB_set(SQLstr2, tb_Need2.TableName);
             tb_Need2 = commission.Tables[0];
+            //commission = CPS_Logistics.DataClass.MysqlClass.DB_set(SQLstr2, tb_emergency.TableName);
+            //tb_emergency = commission.Tables[0];
 
             //这里开始是我写的
             string route1;
             string route2;
+            //string route_emergency;
 
             label9.Text = "";
             route1 = tb_Need1.Rows[0]["sub_task"].ToString();
             route2 = tb_Need2.Rows[0]["sub_task"].ToString();
+            //route_emergency = tb_emergency.Rows[0]["emergency"].ToString();
             id_1 = Convert.ToInt16(tb_Need1.Rows[0]["id"]); //主键读出来,后面update要用
             id_2 = Convert.ToInt16(tb_Need2.Rows[0]["id"]);
             route1_split = route1.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
@@ -1968,7 +1974,8 @@ namespace CPS_Logistics.Scheduling
         /*-----------------状态更新模块，后台->数据库--------------------*/
         public static void Updastation_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            string SQLstr;
+            //satation的集成到detail里面去（不知道行不行）
+            /*string SQLstr;
             try
             {
                 SQLstr = "Update agv1_status set station_now=" + AGV1now + ", station_next=" + AGV1next;
@@ -1987,7 +1994,7 @@ namespace CPS_Logistics.Scheduling
             catch(Exception str)
             {
                 
-            }
+            }*/
 
             try
             {
@@ -2011,83 +2018,93 @@ namespace CPS_Logistics.Scheduling
 
             
         }
-
-
-        static void  Updatedetail(int e)  //状态需要累计吗？
+        
+        static void  Updatedetail(int e)  //状态需要累计吗？-->需要
         {
             string SQLstr;
+            string SQLselect;
             if (AGVdetails.yesno(AGVdetails.PIC[2], 2) == 0)
             {
-                SQLstr = "Update agv" + e + "_status set block = '无障碍物'";
+                SQLstr = "Insert into agv_status(id_AGV, block) values('" + e + "', '无障碍物')";
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVBlocked='无障碍物' WHERE ID = '"+e+"';";
-                DataClass.MysqlClass.DB_Change(SQLstr);
+                DataClass.MysqlClass.DB_insert(SQLstr);
             }
             else
             {
-                SQLstr = "Update agv" + e + "_status set block = '有障碍物'";
+                SQLstr = "Insert into agv_status(id_AGV, block) values('" + e + "', '有障碍物')";
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVBlocked='有障碍物' WHERE ID = '" + e + "';";
-                DataClass.MysqlClass.DB_Change(SQLstr);
+                DataClass.MysqlClass.DB_insert(SQLstr);
             }
+
+            //读id后面在那一行update
+            DataTable tb_readID = new DataTable("tb_readID");
+            DataSet commission = new DataSet();
+            int id;
+            SQLselect = "SELECT id from agv_status order by id DESC limit 1";
+            commission = CPS_Logistics.DataClass.MysqlClass.DB_set(SQLselect, tb_readID.TableName);
+            tb_readID = commission.Tables[0];
+            id = Convert.ToInt16(tb_readID.Rows[0]["id"]);
+
             if (AGVdetails.yesno(AGVdetails.PIC[2], 3) == 0)
             {
-                SQLstr = "Update agv" + e + "_status set sensor = '传感器正常'";
+                SQLstr = "Update agv_status set sensor='传感器正常' where id=" + id;
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVSensor='传感器正常' WHERE ID = '" + e + "';";
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
             else
             {
-                SQLstr = "Update agv" + e + "_status set sensor = '传感器异常'";
+                SQLstr = "Update agv_status set sensor='传感器异常' where id=" + id;
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVSensor='传感器异常' WHERE ID = '" + e + "';";
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
 
             if (AGVdetails.yesno(AGVdetails.PIC[2], 5) == 0)
             {
-                SQLstr = "Update agv" + e + "_status set direction = '正向行驶'";
+                SQLstr = "Update agv_status set direction='正向行驶' where id=" + id;
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVDirection='正向行驶' WHERE ID = '" + e + "';";
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
             else
             {
-                SQLstr = "Update agv" + e + "_status set direction = '逆向行驶'";
+                SQLstr = "Update agv_status set direction='逆向行驶' where id=" + id;
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVDirection='逆向行驶' WHERE ID = '" + e + "';";
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
 
             if (AGVdetails.yesno(AGVdetails.PIC[2], 8) == 0)
             {
-                SQLstr = "Update agv" + e + "_status set collsion = '暂无碰撞'";
+                SQLstr = "Update agv_status set collision='暂无碰撞' where id=" + id;
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVCollsion='暂无碰撞' WHERE ID = '" + e + "';";
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
             else
             {
-                SQLstr = "Update agv" + e + "_status set collsion = '出现碰撞'";
+                SQLstr = "Update agv_status set collision='出现碰撞' where id=" + id;
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVCollsion='出现碰撞' WHERE ID = '" + e + "';";
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
             if (AGVdetails.yesno(AGVdetails.PIC[2], 9) == 0)
             {
-                SQLstr = "Update agv" + e + "_status set guide = '引导正常'";
+                SQLstr = "Update agv_status set guide='引导正常' where id=" + id;
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVGuide='引导正常' WHERE ID = '" + e + "';";
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
 
             else
             {
-                SQLstr = "Update agv" + e + "_status set guide = '引导丢失'";
+                SQLstr = "Update agv_status set guide='引导丢失' where id=" + id;
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVGuide='引导丢失' WHERE ID = '" + e + "';";
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
 
-            SQLstr = "Upeate agv" + e + "_status set voltage=" + AGVdetails.PIC[4] / 100 + "V";
+            SQLstr = "Update agv_status set voltage='" + AGVdetails.PIC[4] / 100 + "V' where id=" + id; 
             //SQLstr = "UPDATE tb_AGVDetail SET AGVBattery='" + AGVdetails.PIC[4] / 100 + "V' WHERE ID = '" + e + "';";
             DataClass.MysqlClass.DB_Change(SQLstr);
 
 
             if (AGVdetails.yesno(AGVdetails.PIC[3], 2) == 1)
             {
-                SQLstr = "Update agv" + e + "_status set charge = '正在充电'";
+                SQLstr = "Update agv_status set charge='正在充电' where id=" + id;
                 //SQLstr = "UPDATE tb_AGVDetail SET AGVCharge='正在充电' WHERE ID = '" + e + "';";
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
@@ -2095,7 +2112,7 @@ namespace CPS_Logistics.Scheduling
             {
                 if (AGVdetails.yesno(AGVdetails.PIC[3], 4) == 1)
                 {
-                    SQLstr = "Update agv" + e + "_status set charge = '需要充电'";
+                    SQLstr = "Update agv_status set charge='需要充电' where id=" + id;
                     //SQLstr = "UPDATE tb_AGVDetail SET AGVCharge='需要充电' WHERE ID = '" + e + "';";
                     DataClass.MysqlClass.DB_Change(SQLstr);
                 }
@@ -2104,37 +2121,56 @@ namespace CPS_Logistics.Scheduling
                 {
                     if (AGVdetails.yesno(AGVdetails.PIC[3], 3) == 1)
                     {
-                        SQLstr = "Update agv" + e + "_status set charge = '充电完成'";
+                        SQLstr = "Update agv_status set charge='充电完成' where id=" + id;
                         //SQLstr = "UPDATE tb_AGVDetail SET AGVCharge='充电完成' WHERE ID = '" + e + "';";
                         DataClass.MysqlClass.DB_Change(SQLstr);
                     }
                     else
                     {
-                        SQLstr = "Update agv" + e + "_status set charge = '电量正常'";
+                        SQLstr = "Update agv_status set charge='电量正常' where id=" + id;
                         //SQLstr = "UPDATE tb_AGVDetail SET AGVCharge='电量正常' WHERE ID = '" + e + "';";
                         DataClass.MysqlClass.DB_Change(SQLstr);
                     }
                 }
             }
+
+            if (e == 1)
+            {
+                SQLstr = "Update agv_status set station='" + AGV1now + "' where id=" + id;
+                //SQLstr = "UPDATE tb_AGVDetail SET AGVStationnow='" + AGV1now + "',AGVStationnext='" + AGV1next + "' WHERE ID = '1';";
+                DataClass.MysqlClass.DB_Change(SQLstr);
+            }
+            else
+            {
+                SQLstr = "Update agv_status set station='" + AGV2now + "' where id=" + id;
+                //SQLstr = "UPDATE tb_AGVDetail SET AGVStationnow='" + AGV1now + "',AGVStationnext='" + AGV1next + "' WHERE ID = '1';";
+                DataClass.MysqlClass.DB_Change(SQLstr);
+            }
+
         }
 
-        /*-----------------优化后的数据push函数：path, distance, efficiency--------------------*/
+        /*-----------------优化后的数据push函数：path, distance, efficiency, check置1--------------------*/
         static void optimized_upload(int e)
         {
             string path1_op = "";
             string path2_op = "";
             string SQLstr;
+            string SQLchecked;
 
             if (e == 1)
             {
                 for (int i = 0; i < autopath1.Length; i++) path1_op += (autopath1[i] + "-");
-                SQLstr = "Update agv" + e + "_optimize set route_optimize=" + path1_op.ToString() + " where sequence=" + sequence;
+                SQLstr = "Update agv_optimize set task_optimal='" + path1_op + "' where id=" + id_1;
+                DataClass.MysqlClass.DB_Change(SQLstr);
+                SQLchecked = "Update agv_optimize set checked='1' where id=" + id_1;
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
             else
             {
                 for (int i = 0; i < autopath2.Length; i++) path2_op += (autopath2[i] + "-");
-                SQLstr = "Update agv" + e + "_optimize set route_optimize=" + path2_op.ToString() + " where sequence=" + sequence;
+                SQLstr = "Update agv_optimize set task_optimal='" + path2_op + "' where id=" + id_2;
+                DataClass.MysqlClass.DB_Change(SQLstr);
+                SQLchecked = "Update agv_optimize set checked='1' where id=" + id_2;
                 DataClass.MysqlClass.DB_Change(SQLstr);
             }
         }
